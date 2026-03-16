@@ -4,9 +4,8 @@ import dist.lab2.server.BankAccount;
 
 public interface BankService {
     BankAccount newAccount(String ownerName);
-    long getId(String ownerName);
     BankAccount getBankAccount(long id);
-    BankAccount getBankAccount(String name);
+    BankAccount getBankAccount(String ownerName);
 
     void takeMoney(long id, float amount);
     void addMoney(long id, float amount);

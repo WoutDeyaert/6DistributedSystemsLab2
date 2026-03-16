@@ -23,8 +23,13 @@ public class Controller {
         return bankService.newAccount(name);
     }
 
-    @GetMapping("/getID/{name}")
-    public BankAccount getAccount(@PathVariable String name){
+    @GetMapping("/getAccountByID/{id}")
+    public BankAccount getAccountById(@PathVariable long id){
+        return bankService.getBankAccount(id);
+    }
+
+    @GetMapping("/getAccountByName/{name}")
+    public BankAccount getAccountByName(@PathVariable String name){
         return bankService.getBankAccount(name);
     }
 
@@ -32,6 +37,18 @@ public class Controller {
     public String addMoney(@PathVariable long id, @PathVariable float amount){
         bankService.addMoney(id, amount);
         return "Money added";
+    }
+
+    @PutMapping("/takeMoney/{id}/{amount}")
+    public String takeMoney(@PathVariable long id, @PathVariable float amount){
+        bankService.takeMoney(id, amount);
+        return "Money taken";
+    }
+
+    @PutMapping("/transferMoney/{idFrom}/{idTo}/{amount}")
+    public String transferMoney(@PathVariable long idFrom, @PathVariable long idTo, @PathVariable float amount){
+        bankService.transferMoney(idFrom, idTo, amount);
+        return "Money transfered";
     }
 }
 //6705787
